@@ -1,0 +1,232 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  background-color: #232323;
+  font-family: 'Noto Serif JP', serif;
+}
+
+body ::-webkit-scrollbar, html ::-webkit-scrollbar {
+  width: 12px;
+}
+
+body ::-webkit-scrollbar-track, html ::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.col-in-block {
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.filmes {
+  color: #fff;
+  padding: 15px;
+  min-height: 400px;
+  position: relative;
+}
+
+.filmes button {
+  font-size: 14px;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  background-color: #1d1e32;
+  width: 40%;
+}
+
+.filmes button:last-child {
+  background-color: #db1d3f;
+}
+
+.filmes h2 {
+  font-size: 15px;
+}
+
+.fs-0 {
+  font-size: 0;
+}
+
+.active {
+  border-bottom: 2px solid #db1d3f;
+}
+
+.p-l-0 {
+  padding-left: 0;
+}
+
+.m-w {
+  max-width: 100%;
+}
+
+.main-container {
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.main-container .nav-bar {
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.main-container .nav-bar .logo h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.main-container .nav-bar .menu ul {
+  list-style: none;
+  margin: 0;
+}
+
+.main-container .nav-bar .menu ul li {
+  display: inline-block;
+  padding: 24px 14px;
+}
+
+.main-container .nav-bar .menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.main-container .nav-bar .menu ul li:last-child {
+  background-color: #db1d3f;
+  padding: 15px;
+  border-radius: 25px;
+}
+
+.main-container .main-banner {
+  height: 50vh;
+  width: 100%;
+  background-color: #232323;
+  background-image: url("https://coverfiles.alphacoders.com/960/96071.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.main-container .main-banner .over {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(51, 51, 51, 0.7);
+}
+
+.main-container .movies-wrapper {
+  width: 100%;
+}
+
+.main-container .movies-wrapper .info-text {
+  width: 100%;
+  display: none;
+}
+
+.main-container .movies-wrapper .info-text h2 {
+  color: #fff;
+  letter-spacing: 2px;
+  padding: 24px 14px;
+  text-align: center;
+}
+
+.main-container .movies-wrapper .choose-type {
+  width: 100%;
+  background-color: #1d1e32;
+}
+
+.main-container .movies-wrapper .choose-type ul.types {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.main-container .movies-wrapper .choose-type ul.types li {
+  display: inline-block;
+  padding: 0px 40px 10px;
+}
+
+.main-container .movies-wrapper .choose-type ul.types li h3 {
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.main-container .movies-wrapper .choose-category {
+  background-color: rgba(51, 51, 51, 0.4);
+  width: 100%;
+}
+
+.main-container .movies-wrapper .choose-category .search {
+  padding: 14px;
+  color: #fff;
+  text-align: center;
+}
+
+.main-container .movies-wrapper .choose-category .search h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.main-container .movies-wrapper .choose-category .search span {
+  color: #db1d3f;
+  font-size: 20px;
+}
+
+.main-container .movies-wrapper .choose-category .search input {
+  padding: 10px;
+  border-radius: 25px;
+  border: 0;
+  outline: 0;
+  width: 90%;
+  background-color: rgba(51, 51, 51, 0.7);
+}
+
+.main-container .movies-wrapper .choose-category .show-genre-list {
+  padding: 15px 0;
+}
+
+.main-container .movies-wrapper .choose-category .show-genre-list ul {
+  list-style: none;
+  text-align: center;
+}
+
+.main-container .movies-wrapper .choose-category .show-genre-list ul li {
+  padding: 14px 5px;
+}
+
+.main-container .movies-wrapper .choose-category .show-genre-list ul li:hover {
+  background-color: #db1d3f;
+}
+
+.main-container .movies-wrapper .choose-category .show-genre-list ul li a {
+  color: #fff;
+  letter-spacing: 1px;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+}
