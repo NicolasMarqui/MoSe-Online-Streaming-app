@@ -104,6 +104,8 @@ $(document).ready(function(){
 
             let parent = $('.movie-info');
 
+            console.log(data)
+
             let div = `
                 <div class="wrapper-info">
                     <div class="banner-movie-img" style="background-image: url('${FULL_IMAGE_URL}${data.backdrop_path}')">
@@ -114,10 +116,18 @@ $(document).ready(function(){
                             <div class="col-xs-12 col-md-3">
                                 <div class="movie-info-info">
                                     <img src="${IMG_URL}${data.poster_path}">
+                                    <a href="#">Watch</a>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-9">
-                                <h1>${data.title}</h1>
+                                <div class="movie-information">
+                                    <h1>${data.title}</h1>
+                                    <div class="show-genres-span"> <ul id="genres-title"></ul> </div>
+                                    <p class="movie-overview">${data.overview}</p>
+                                    <div class="movie-misc">
+                                        <h2 class="movie-vote">${data.vote_average}</h2>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -125,6 +135,14 @@ $(document).ready(function(){
             `
 
             parent.append(div);
+
+            let genres_span = $('#genres-title');
+
+            data.genres.forEach(genre => {
+                let li = `<li><p>${genre.name}</p></li>`
+                genres_span.append(li);
+            })
+
         })
     }
 
@@ -133,4 +151,26 @@ $(document).ready(function(){
           movie_info(getQueryVariable('id'));
         }
       }
+
+    const runtime_to_hours = run => {
+
+        let hour = (run / 60);
+        let hour_rounded = Math.floor(hour);
+
+        let minute = (hour - hour_rounded) * 60;
+        let minute_rounded = Math.round(minute);
+
+        return `${hour_rounded}h and ${minute_rounded}m`
+    }
+
+    const set_price_movie = (movie) => {
+
+        let runtine = movie.runtime;
+
+        return runtine / 25;
+    }
+
+    const get_similar_movie = id => {
+        
+    }
 })

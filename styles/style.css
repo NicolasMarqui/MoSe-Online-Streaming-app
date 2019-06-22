@@ -85,6 +85,10 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
   max-width: 100%;
 }
 
+.v-top {
+  vertical-align: top;
+}
+
 .main-container {
   min-height: 100%;
   width: 100%;
@@ -132,7 +136,7 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
   height: 50vh;
   width: 100%;
   background-color: #232323;
-  background-image: url("https://coverfiles.alphacoders.com/960/96071.jpg");
+  background-image: url("https://image.tmdb.org/t/p/original//vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -270,4 +274,64 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 
 .main-container .movie-info .wrapper-info .movie-info-info {
   margin-top: -180px;
+  text-align: center;
+}
+
+.main-container .movie-info .wrapper-info .movie-info-info a {
+  display: block;
+  padding: 14px 4px;
+  background-color: #db1d3f;
+  margin: 15px auto;
+  text-decoration: none;
+  color: #fff;
+  width: 72%;
+  border-radius: 25px;
+}
+
+.main-container .movie-info .wrapper-info .movie-information h1 {
+  color: #fff;
+}
+
+.main-container .movie-info .wrapper-info .movie-information .show-genres-span ul {
+  list-style: none;
+}
+
+.main-container .movie-info .wrapper-info .movie-information .show-genres-span ul li {
+  display: inline-block;
+  padding: 8px 14px 10px 0;
+}
+
+.main-container .movie-info .wrapper-info .movie-information .show-genres-span ul li p {
+  color: #fff;
+  font-size: 10px;
+}
+
+.main-container .movie-info .wrapper-info .movie-information p.movie-overview {
+  color: #fff;
+}
+
+.main-container .pricing-movie {
+  width: 100%;
+  padding: 100px 0;
+}
+
+.main-container .pricing-movie .type-buy {
+  list-style: none;
+}
+
+.main-container .pricing-movie .type-buy li {
+  padding: 24px 10px;
+  background-color: #db1d3f;
+  border-radius: 25px;
+  margin: 10px 0;
+}
+
+.main-container .pricing-movie .type-buy li a {
+  font-size: 14px;
+  color: #fff;
+}
+
+.main-container .pricing-movie .box-info {
+  background-color: #fff;
+  font-size: 14px;
 }
