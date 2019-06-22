@@ -25,7 +25,7 @@ $(document).ready(function(){
         })
     }
 
-    getGenres();
+    //getGenres();
 
     const getPopularMovies = () => {
 
@@ -73,6 +73,32 @@ $(document).ready(function(){
         })
     }
 
-    getPopularMovies();
+    //getPopularMovies();
 
+    const removeActive = () => {
+
+        let types = document.querySelectorAll('.types li');
+
+        types.forEach(item => {
+            $(item).click(function(){
+                if(!$(item).hasClass('active')){
+                    $('li').removeClass('active');
+
+                    $(this).addClass('active');
+                }
+            })
+        })
+    }
+
+    removeActive();
+
+    const search = (query) => {
+        location.replace(`search.php?query=${query}`);
+    }
+
+    $('#form-search').submit(function(e){
+        e.preventDefault();
+        console.log(e.target)
+        search($('#search').val());
+    })
 })

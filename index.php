@@ -22,7 +22,10 @@
                     <div class="choose-category">
                         <div class="search">
                             <h3>Search your favorite <br> <span>Movie</span></h3>
-                            <input type="text" id="search" placeholder="Search">
+                            <form id="form-search">
+                                <input type="text" id="search" placeholder="Search">
+                                <button id="goToSearch">Search</button>
+                            </form>
                         </div>
                         <div class="show-genre-list">
                             <ul id="genre-parent">
