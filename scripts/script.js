@@ -4,6 +4,7 @@ $(document).ready(function(){
     const TRENDING_URL = 'https://api.themoviedb.org/3/trending/movie/week?api_key=';
     const IMG_URL = 'https://image.tmdb.org/t/p/w200/';
     const FULL_IMAGE_URL = 'https://image.tmdb.org/t/p/original/';
+    const YOUTUBE_FRAME = '<iframe width="560" height="315" src="https://www.youtube.com/embed/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
 
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
@@ -100,11 +101,11 @@ $(document).ready(function(){
     })
 
     const movie_info = (id) => {
-        $.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`,function(data){
+        $.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`,function(data){
 
             let parent = $('.movie-info');
 
-            console.log(data)
+            console.log(data.videos.results)
 
             let div = `
                 <div class="wrapper-info">
@@ -125,7 +126,10 @@ $(document).ready(function(){
                                     <div class="show-genres-span"> <ul id="genres-title"></ul> </div>
                                     <p class="movie-overview">${data.overview}</p>
                                     <div class="movie-misc">
-                                        <h2 class="movie-vote">${data.vote_average}</h2>
+                                        <p>Info</p>
+                                        <h2>${data.status === 'Released' ? 'Released' : 'Not released'}</h2>
+                                        <h2 class="movie-vote">${data.vote_average}/<span>${data.vote_count}</span></h2>
+                                        <h2 class="movie-runtime">${runtime_to_hours(data.runtime)}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -135,6 +139,19 @@ $(document).ready(function(){
             `
 
             parent.append(div);
+
+            data.videos.results.forEach(trailers => {
+                if(trailers.type === 'Trailer'){
+                    let trailer = `
+                        <div class="trailer-wrapper">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/${trailers.key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div>
+                    `
+
+                    parent.append(trailer);
+                }
+            })
+
 
             let genres_span = $('#genres-title');
 
@@ -149,6 +166,7 @@ $(document).ready(function(){
     window.onload = function() {
         if (window.location.href.indexOf('info.php') > -1) {
           movie_info(getQueryVariable('id'));
+          get_similar_movie(getQueryVariable('id'))
         }
       }
 
@@ -172,5 +190,25 @@ $(document).ready(function(){
 
     const get_similar_movie = id => {
         
+        let row_1 = $('#row-1');
+        let row_2 = $('#row-2');
+        let main_row = $('.teste');
+        row_1.css('overflowX', 'scroll');
+
+        
+        // $.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`, function(data){
+        //     //console.log(data.results[0]);
+
+        //     //main_row.css('background-image', `url('${IMG_URL}${data.results[0].poster_path}')`);
+
+        //     $.map(data.results, similar => {
+        //         console.log(similar)
+        //         let div1 = `<div id="help" style="background-image: url('${IMG_URL}${similar.poster_path}')"></div>`;
+
+
+        //         row_1.append(div1);
+        //     })
+
+        // })
     }
 })

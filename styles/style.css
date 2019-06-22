@@ -308,6 +308,30 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 
 .main-container .movie-info .wrapper-info .movie-information p.movie-overview {
   color: #fff;
+  line-height: 34px;
+  text-align: justify;
+}
+
+.main-container .movie-info .wrapper-info .movie-information .movie-misc {
+  padding: 50px 0px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.main-container .movie-info .trailer-wrapper {
+  width: 100%;
+  margin: 25px 0;
+}
+
+@media (max-width: 650px) {
+  .main-container .movie-info .trailer-wrapper {
+    display: none;
+  }
+}
+
+.main-container .movie-info .trailer-wrapper iframe {
+  margin: 0 auto;
+  display: block;
 }
 
 .main-container .pricing-movie {
@@ -324,14 +348,121 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
   background-color: #db1d3f;
   border-radius: 25px;
   margin: 10px 0;
+  text-align: center;
 }
 
 .main-container .pricing-movie .type-buy li a {
+  font-size: 17px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.main-container .pricing-movie .box {
+  background-color: rgba(51, 51, 51, 0.4);
   font-size: 14px;
+  color: #fff;
+  padding-bottom: 15px;
+}
+
+.main-container .pricing-movie .box h2 {
+  margin: 10px;
+  padding: 15px 0;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+.main-container .pricing-movie .box span {
+  margin-left: 10px;
+  font-size: 40px;
+  color: #db1d3f;
+}
+
+.main-container .pricing-movie .box ul {
+  list-style: none;
+  margin: 50px 0;
+}
+
+.main-container .pricing-movie .box ul li {
+  padding: 10px 0;
+}
+
+.main-container .pricing-movie .box a {
+  padding: 14px;
+  background-color: #ffffff;
+  width: 70%;
+  margin: 0 auto;
+  display: block;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
+.main-container .pricing-movie .box-1 .box-header {
+  background-color: #db1d3f;
+}
+
+.main-container .pricing-movie .box-1 span {
+  color: #232323;
+}
+
+.main-container .pricing-movie .box-1 a {
+  background-color: #db1d3f;
+  color: #232323;
+}
+
+.main-container .pricing-movie .box-1 a:hover .box-1 {
+  background-color: #db1d3f;
+}
+
+.main-container .pricing-movie .box-2 .box-header {
+  background-color: #1d1e32;
+}
+
+.main-container .pricing-movie .box-2 span {
   color: #fff;
 }
 
-.main-container .pricing-movie .box-info {
+.main-container .pricing-movie .box-2 a {
+  background-color: #1d1e32;
+  color: #fff;
+}
+
+.main-container .pricing-movie .box-3 .box-header {
   background-color: #fff;
-  font-size: 14px;
+  color: #232323;
+}
+
+.main-container .pricing-movie .box-3 span {
+  color: #232323;
+}
+
+.main-container .pricing-movie .box-3 a {
+  background-color: #fff;
+  color: #232323;
+}
+
+.main-container .similar-movies {
+  height: 100vh;
+  width: 100%;
+}
+
+.main-container .similar-movies .teste {
+  height: 500px;
+  background-color: #c4c4c4;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-container .similar-movies .teste-2 {
+  background-color: #fff;
+  height: 500px;
+}
+
+.main-container .similar-movies .teste-2 .row div {
+  height: 250px;
+  background-color: orange;
+}
+
+.main-container .similar-movies .teste-2 .row div:first-child {
+  background-color: green;
 }

@@ -4,26 +4,25 @@
         <div class="movie-info">
             
         </div>
-        <div class="pricing-movie">
-            <div class="container">
-                <div class="row fs-0">
-                    <div class="col-xs-12 col-md-6 col-in-block">
-                        <ul class="type-buy">
-                            <li><a href="#">Rent now</a></li>
-                            <li><a href="#">Buy now</a></li>
-                            <li><a href="#">Preview now</a></li>
-                        </ul>    
+        
+        <div class="similar-movies">
+            <!-- <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3 teste">
+                        teste
                     </div>
-                    <div class="col-xs-12 col-md-6 col-in-block v-top">
-                        <div class="box-info">
-                            <h2>Rent Now</h2>
-                            <span>$ 6.50</span>
-                            <br>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat, a!</p>
+                    <div class="col-xs-12 col-md-9 teste-2">
+                        <div class="row">
+                            <div class="col-xs-12" id="row-1">
+                                ea
+                            </div>
+                            <div class="col-xs-12" id="row-2">
+                                eae
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     <?php else:?>
 
