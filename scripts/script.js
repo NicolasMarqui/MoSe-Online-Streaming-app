@@ -88,9 +88,6 @@ $(document).ready(function(){
     removeActive();
 
     const search = (query) => {
-        // $.get(`https://api.themoviedb.org/3/search/company?api_key=${API_KEY}&query=${query}}&page=1`, (data) => {
-        //     //console.log(data)
-        // })
         location.replace(`search.php?query=${query}`);
     }
 
@@ -104,6 +101,8 @@ $(document).ready(function(){
         $.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`,function(data){
 
             let parent = $('.movie-info');
+
+            $('.similar-movies').css('background-image', `url('${FULL_IMAGE_URL}${data.backdrop_path}')`);
 
             console.log(data.videos.results)
 
@@ -140,6 +139,10 @@ $(document).ready(function(){
 
             parent.append(div);
 
+            // for(let i = 0;i < data.videos.results.length;i++){
+
+            // }
+
             data.videos.results.forEach(trailers => {
                 if(trailers.type === 'Trailer'){
                     let trailer = `
@@ -167,6 +170,8 @@ $(document).ready(function(){
         if (window.location.href.indexOf('info.php') > -1) {
           movie_info(getQueryVariable('id'));
           get_similar_movie(getQueryVariable('id'))
+        }else if(window.location.href.indexOf('search.php') > -1){
+            display_search_query(getQueryVariable('query'))
         }
       }
 
@@ -211,4 +216,12 @@ $(document).ready(function(){
 
         // })
     }
+
+    const display_search_query = (query) => {
+        
+        $.get(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`, (data) => {
+            console.log(data)
+        })
+    }
+
 })

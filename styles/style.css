@@ -304,6 +304,9 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 .main-container .movie-info .wrapper-info .movie-information .show-genres-span ul li p {
   color: #fff;
   font-size: 10px;
+  padding: 10px;
+  background-color: #db1d3f;
+  cursor: pointer;
 }
 
 .main-container .movie-info .wrapper-info .movie-information p.movie-overview {
@@ -316,6 +319,10 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
   padding: 50px 0px;
   font-size: 14px;
   color: #fff;
+}
+
+.main-container .movie-info .wrapper-info .movie-information .movie-misc .movie-vote span {
+  font-size: 10px;
 }
 
 .main-container .movie-info .trailer-wrapper {
@@ -442,27 +449,52 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 }
 
 .main-container .similar-movies {
-  height: 100vh;
+  padding: 100px 0;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.main-container .similar-movies .over {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(51, 51, 51, 0.7);
+}
+
+.main-container .similar-movies .get-plan {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
+.main-container .similar-movies .get-plan p {
+  font-size: 24px;
+}
+
+.main-container .similar-movies .get-plan a {
+  padding: 7px;
+  border: none;
+  border-radius: 25px;
+  background-color: #db1d3f;
+  margin: 15px 0;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+}
+
+.main-container .search-wrapper {
+  min-height: 100vh;
   width: 100%;
 }
 
-.main-container .similar-movies .teste {
-  height: 500px;
+.main-container .search-wrapper .banner-show-query {
   background-color: #c4c4c4;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.main-container .similar-movies .teste-2 {
-  background-color: #fff;
-  height: 500px;
-}
-
-.main-container .similar-movies .teste-2 .row div {
-  height: 250px;
-  background-color: orange;
-}
-
-.main-container .similar-movies .teste-2 .row div:first-child {
-  background-color: green;
 }
