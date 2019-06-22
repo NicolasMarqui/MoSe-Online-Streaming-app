@@ -37,23 +37,30 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 .filmes {
   color: #fff;
   padding: 15px;
-  min-height: 400px;
+  min-height: 450px;
   position: relative;
+  -webkit-box-shadow: 0px 1px 39px 11px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 1px 39px 11px rgba(0, 0, 0, 0.75);
+  text-align: center;
 }
 
-.filmes button {
+.filmes .btn-down {
+  margin: 25px 0;
+}
+
+.filmes .btn-down a {
   font-size: 14px;
-  padding: 10px;
-  margin: 15px 0;
+  padding: 14px 14px;
+  margin: 0 15px;
+  text-decoration: none;
   border-radius: 15px;
-  border: none;
-  outline: none;
-  background-color: #1d1e32;
-  width: 40%;
+  background-color: #db1d3f;
+  color: #fff;
+  display: inline-block;
 }
 
-.filmes button:last-child {
-  background-color: #db1d3f;
+.filmes .btn-down a:first-child {
+  background-color: #1d1e32;
 }
 
 .filmes h2 {
@@ -66,6 +73,8 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 
 .active {
   border-bottom: 2px solid #db1d3f;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .p-l-0 {
@@ -229,4 +238,36 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
   text-decoration: none;
   height: 100%;
   width: 100%;
+}
+
+.main-container .movie-info {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-container .movie-info .wrapper-info {
+  height: 100%;
+  width: 100%;
+}
+
+.main-container .movie-info .wrapper-info .banner-movie-img {
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.main-container .movie-info .wrapper-info .banner-movie-img .banner-opacity {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.main-container .movie-info .wrapper-info .movie-info-info {
+  margin-top: -180px;
 }

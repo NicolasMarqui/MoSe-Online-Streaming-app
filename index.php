@@ -1,4 +1,7 @@
 <?php include('./includes/header.php'); ?>
+    <div class="main-banner">
+        <div class="over"></div>
+    </div>
     <div class="movies-wrapper">
         <div class="info-text">
             <h2>Choose.Watch.Enjoy.</h2>
@@ -9,8 +12,8 @@
                     <div class="col-xs-12 col-in-block text-center">
                         <ul class="types">
                             <li class="active"><h3>Trending</h3></li>
-                            <li><h3>New Movies</h3></li>
-                            <li><h3>New TV shows</h3></li>
+                            <li><h3>Movies</h3></li>
+                            <li><h3>TV shows</h3></li>
                         </ul>
                     </div>
                 </div>

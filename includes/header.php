@@ -27,7 +27,4 @@
                 </div>
             </div>
         </div>
-        <div class="main-banner">
-            <div class="over"></div>
-        </div>
     
