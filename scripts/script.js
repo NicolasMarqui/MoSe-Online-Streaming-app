@@ -132,6 +132,7 @@ $(document).ready(function(){
                                     <div class="movie-misc">
                                         <p>Info</p>
                                         <h2>${data.status === 'Released' ? 'Released' : 'Not released'}</h2>
+                                        <h2 class="movie-teste"></span></h2>
                                         <h2 class="movie-vote">${data.vote_average}/<span>${data.vote_count}</span></h2>
                                         <h2 class="movie-runtime">${runtime_to_hours(data.runtime)}</h2>
                                     </div>
@@ -142,11 +143,30 @@ $(document).ready(function(){
                 </div>
             `
 
+            let avg = data.vote_average;
+            let second_vote = avg.toString().split(".");
+            let vote;
+
+
+            if(second_vote[1] > 5){
+                vote = Math.ceil(data.vote_average);
+            }else{
+                vote = Math.floor(data.vote_average);              
+            }
+
             parent.append(div);
+            
+            for(let i = 0;i < 10;i++){
+                $('.movie-teste').append('<i class="far fa-star fa-2x"></i>');
+            }
 
-            // for(let i = 0;i < data.videos.results.length;i++){
+            let stars = document.querySelectorAll('.fa-star');
 
-            // }
+            for(let j = 0; j < vote; j++){
+                stars[j].style.color = 'yellow';
+            }
+
+            parent.append('<h2 class="trailer-title">Trailer(s)</h2>')
 
             data.videos.results.forEach(trailers => {
                 if(trailers.type === 'Trailer'){
@@ -202,6 +222,7 @@ $(document).ready(function(){
                                             <div class="col-xs-12 col-md-6 col-in-block">
                                                 <p>Info</p>
                                                 <h2>${data.status === 'Ended' ? 'Ended' : 'Still playing'}</h2>
+                                                <h2 class="movie-teste"></span></h2>
                                                 <h2 class="movie-vote">${data.vote_average}/<span>${data.vote_count}</span></h2>
                                             </div>
                                             <div class="col-xs-12 col-md-6 col-in-block">
@@ -226,7 +247,30 @@ $(document).ready(function(){
                 </div>
             `
 
+            let avg = data.vote_average;
+            let second_vote = avg.toString().split(".");
+            let tv_vote;
+
+
+            if(second_vote[1] > 5){
+                tv_vote = Math.ceil(data.vote_average);
+            }else{
+                tv_vote = Math.floor(data.vote_average);              
+            }
+
             parent.append(div);
+
+            for(let i = 0;i < 10;i++){
+                $('.movie-teste').append('<i class="far fa-star fa-2x"></i>');
+            }
+
+            let stars = document.querySelectorAll('.fa-star');
+
+            for(let j = 0; j < tv_vote; j++){
+                stars[j].style.color = 'yellow';
+            }
+
+            parent.append('<h2 class="trailer-title">Trailer(s)</h2>')
 
             data.seasons.forEach((season,i) => {
                 $('#all_seasons').append(`<li role="presentation" ><a href="#${season.id}">${season.name}</a> </li>`);

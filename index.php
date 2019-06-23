@@ -11,8 +11,8 @@
                 <div class="row fs-0">
                     <div class="col-xs-12 col-in-block text-center">
                         <ul class="types">
-                            <li class="active"><h3>Trending Movies</h3></li>
-                            <li><h3>Trending TV Shows</h3></li>
+                            <li class="active" id="movies-index"><h3>Trending Movies</h3></li>
+                            <li id="series-index"><h3>Trending TV Shows</h3></li>
                         </ul>
                     </div>
                 </div>

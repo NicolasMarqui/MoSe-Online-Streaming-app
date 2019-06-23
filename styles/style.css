@@ -992,3 +992,14 @@ body ::-ms-input-placeholder, html ::-ms-input-placeholder {
   color: #fff;
   font-weight: 400;
 }
+
+.main-container .trailer-title {
+  text-align: center;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .main-container .trailer-title {
+    display: none;
+  }
+}
