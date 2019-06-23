@@ -39,7 +39,7 @@ $(document).ready(function(){
         })
     }
 
-    //getGenres();
+    getGenres();
 
     const getPopularMovies = () => {
 
@@ -93,7 +93,13 @@ $(document).ready(function(){
 
     $('#form-search').submit(function(e){
         e.preventDefault();
-        search($('#search').val());
+
+        if(e.target[0].value === ''){
+            alert('Query must be somenthing')
+        }else{
+            search($('#search').val());
+        }
+
 
     })
 
@@ -218,10 +224,55 @@ $(document).ready(function(){
     }
 
     const display_search_query = (query) => {
+
+        let results = $('.show-query-results');
+        let parent = $('#display_search');
         
         $.get(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`, (data) => {
             console.log(data)
+
+            if(data.results.length === 0){
+                parent.append(`<h1>0 results found for '${query}'</h1>`)
+            }else{
+                results.append(`<h2><span>${data.total_results}</span> results found for <span>'${query}'<span></h2>`);
+
+                data.results.forEach(search => {
+
+                    let div = `
+                        <div class="search-results">
+                            <div class="col-xs-12 col-md-3 col-in-block">
+                                <img src="${IMG_URL}${search.poster_path}">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-in-block v-top">
+                                <h2>${search.media_type === 'tv' ? search.original_name : search.title}</h2>
+                                <p>${search.overview}</p>
+                                <a href="#">Watch</a>
+                                <a href="info.php?id=${search.id}">Info</a>
+                            </div>
+                        </div>
+                        
+                    `
+
+                    parent.append(div);
+
+                })
+            }
+
         })
     }
+
+    $(window).scroll(function(){
+        let top = $('.nav-bar');
+
+        if($(window).scrollTop() > 150){
+            top.addClass('fixed-nav');
+
+            $('.logo h1').html('M.S');
+
+        }else{
+            top.removeClass('fixed-nav');
+            $('.logo h1').html('MoSe');
+        }
+    })
 
 })

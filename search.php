@@ -8,9 +8,18 @@
 
 <?php include('./includes/header.php'); ?>
 
+    <div class="main-banner">
+        <div class="over"></div>
+    </div>
+
     <div class="search-wrapper">
-        <div class="banner-show-query">
-            <h2><?php $query ?></h2>
+        <div class="show-query-results">
+            
+        </div>
+        <div class="container">
+            <div class="row fs-0" id="display_search">
+                
+            </div>
         </div>
     </div>
 

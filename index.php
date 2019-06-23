@@ -24,7 +24,7 @@
                 <div class="col-md-2 hidden-xs hidden-sm p-l-0">
                     <div class="choose-category">
                         <div class="search">
-                            <h3>Search your favorite <br> <span>Movie</span></h3>
+                            <h3>Search</h3>
                             <form id="form-search">
                                 <input type="text" id="search" placeholder="Search">
                                 <button id="goToSearch">Search</button>
@@ -32,11 +32,11 @@
                         </div>
                         <div class="show-genre-list">
                             <ul id="genre-parent">
-                                <li ><a href="">Teste</a></li>
+                                <!-- <li ><a href="">Teste</a></li>
                                 <li><a href="">Teste</a></li>
                                 <li><a href="">Teste</a></li>
                                 <li><a href="">Teste</a></li>
-                                <li><a href="">Teste</a></li>
+                                <li><a href="">Teste</a></li> -->
 
                             </ul>
                         </div>
