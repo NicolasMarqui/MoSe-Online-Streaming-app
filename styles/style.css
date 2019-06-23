@@ -806,3 +806,7 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
     width: 100%;
   }
 }
+
+.main-container .images-person .row div img {
+  display: inline-block;
+}

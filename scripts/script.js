@@ -48,13 +48,12 @@ $(document).ready(function(){
             let parent = $('#display-movies');
 
             $.map(data.results, function(filmes, i){
-                //console.log(filmes)
                 let div = `
                     <div class="col-xs-12 col-sm-6 col-lg-3 col-in-block filmes">
                         <h2>${filmes.title}</h2>
                         <img src="${IMG_URL}${filmes.poster_path}">
                         <div class="btn-down">
-                            <a href="info.php?id=${filmes.id}">Details</a>
+                            <a href="info.php?id=${filmes.id}&type=movie">Details</a>
                             <a href="#">Watch</a>
                         </div>
                     </div>
@@ -171,6 +170,7 @@ $(document).ready(function(){
 
         })
     }
+
     const tv_info = (id) => {
         $.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`,function(data){
 
@@ -293,13 +293,95 @@ $(document).ready(function(){
         })
     }
 
+    const person_info = (id) => {
+        $.get(`https://api.themoviedb.org/3/person/${id}?api_key=${API_KEY}&language=en-US&append_to_response=images`,function(data){
+
+            let parent = $('.movie-info');
+
+            //$('.similar-movies').css('background-image', `url('${FULL_IMAGE_URL}${data.backdrop_path}')`);
+
+            let div = `
+                <div class="wrapper-info">
+                    <div class="banner-movie-img" style="background-image: url('https://image.tmdb.org/t/p/original//vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg')">
+                        <div class="banner-opacity"></div>
+                        
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-3">
+                                <div class="movie-info-info">
+                                    <img src="${IMG_URL}${data.profile_path}">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-9">
+                                <div class="movie-information">
+                                    <h1>${data.name}</h1>
+                                    <p style="color: #fff;padding: 14px">${data.gender === 2 ? 'Male' : 'Female'} , ${get_age(data.birthday)} years old</p>
+                                    <p class="movie-overview">${data.biography}</p>
+                                    <div class="movie-misc">
+
+                                        <div class="row fs-0">
+                                            <div class="col-xs-12 col-md-6 col-in-block">
+                                                <p>Info</p>
+                                                <h2>${data.deathday !== null ? data.deathday : 'Alive - (2019)'}</h2>
+                                                <h2>Birthday: <span>${data.birthday}</span></h2>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-in-block">
+                                                <h2>Role: <span>${data.known_for_department}</span></h2>
+                                                <h2>Place of Birth: <span>${data.place_of_birth !== null ? data.place_of_birth : '-'}</span></h2>
+                                            </div>
+                                        </div>
+
+                                        <div class="show-tv-seasons">
+                                            <ul class="nav nav-tabs" id="all_seasons">
+                                            </ul>
+                                        </div>
+                                        <h1>Gallery</h1>
+                                            <div class="images-person">
+                                                <div class="container-fluid">
+                                                    <div class="row" id="images">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+
+            parent.append(div);
+
+            data.images.profiles.forEach(image => {
+
+                console.log(image)
+
+                let img = `
+                    <div class="col-xs-4" style="padding-top: 14px;padding-bottom: 14px;">
+                        <img src="${IMG_URL}${image.file_path}">
+                    </div>
+                `
+
+                $('#images').append(img)
+
+            })
+
+            
+        })
+    }
+
     window.onload = function() {
         if (window.location.href.indexOf('info.php') > -1) {
 
-            if(getQueryVariable('type') === 'movie' || getQueryVariable('type') === 'Movie'){
+            if(getQueryVariable('type').toLowerCase() === 'movie'.toLowerCase()){
                 movie_info(getQueryVariable('id'));
-            }else{
+            }else if(getQueryVariable('type').toLowerCase() === 'tv'.toLowerCase()){
                 tv_info(getQueryVariable('id'));
+            }else if(getQueryVariable('type').toLowerCase() === 'person'.toLowerCase()){
+                person_info(getQueryVariable('id'));
             }
 
           get_similar_movie(getQueryVariable('id'))
@@ -435,5 +517,23 @@ $(document).ready(function(){
             $('.logo h1').html('MoSe');
         }
     })
+
+    const get_age = birth => {
+
+        const present = 2019;
+        
+        let year = birth.split('-');
+        let year_birth = year[0];
+        let month_birth = year[1];
+        let today = new Date();
+        let month = String(today.getMonth() + 1).padStart(2, '0');
+
+        if(month < month_birth){
+            return present - year_birth - 1;
+        }
+
+        return present - year_birth;
+        
+    }
 
 })
