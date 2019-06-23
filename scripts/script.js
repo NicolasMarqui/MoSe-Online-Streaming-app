@@ -356,16 +356,13 @@ $(document).ready(function(){
             parent.append(div);
 
             data.images.profiles.forEach(image => {
-
-                console.log(image)
-
                 let img = `
-                    <div class="col-xs-4" style="padding-top: 14px;padding-bottom: 14px;">
+                    <div class="col-xs-12 col-md-4" style="padding-top: 14px;padding-bottom: 14px;">
                         <img src="${IMG_URL}${image.file_path}">
                     </div>
                 `
 
-                $('#images').append(img)
+                $('#images').append(img);
 
             })
 
@@ -452,7 +449,7 @@ $(document).ready(function(){
                                 div = `
                                 <div class="search-results">
                                     <div class="col-xs-12 col-md-3 col-in-block">
-                                        <img src="${IMG_URL}${search.poster_path}">
+                                        <img style="max-width: 200px" src="${search.poster_path === null ? 'http://noodleblvd.com/wp-content/uploads/2016/10/No-Image-Available.jpg' : IMG_URL + search.poster_path}">
                                     </div>
                                     <div class="col-xs-12 col-md-9 col-in-block v-top">
                                         <h2>${search.original_name}</h2>
@@ -468,7 +465,7 @@ $(document).ready(function(){
                                 div = `
                                 <div class="search-results">
                                     <div class="col-xs-12 col-md-3 col-in-block">
-                                        <img src="${IMG_URL}${search.poster_path}">
+                                        <img style="max-width: 200px" src="${search.poster_path === null ? 'http://noodleblvd.com/wp-content/uploads/2016/10/No-Image-Available.jpg' : IMG_URL + search.poster_path}">
                                     </div>
                                     <div class="col-xs-12 col-md-9 col-in-block v-top">
                                         <h2>${search.title}</h2>
@@ -484,7 +481,7 @@ $(document).ready(function(){
                                 div = `
                                 <div class="search-results">
                                     <div class="col-xs-12 col-md-3 col-in-block">
-                                        <img src="${IMG_URL}${search.profile_path}">
+                                        <img style="max-width: 200px" src="${search.profile_path === null ? 'http://noodleblvd.com/wp-content/uploads/2016/10/No-Image-Available.jpg' : IMG_URL + search.profile_path}">
                                     </div>
                                     <div class="col-xs-12 col-md-9 col-in-block v-top">
                                         <h2>${search.name}</h2>
@@ -493,10 +490,12 @@ $(document).ready(function(){
                                 </div>
                                 
                             `
+
                         break;
                     }
 
                     parent.append(div);
+                    
 
                 })
             }
@@ -510,29 +509,33 @@ $(document).ready(function(){
         if($(window).scrollTop() > 150){
             top.addClass('fixed-nav');
 
-            $('.logo h1').html('M.S');
+            $('.logo h1 a').html('M.S');
 
         }else{
             top.removeClass('fixed-nav');
-            $('.logo h1').html('MoSe');
+            $('.logo h1 a').html('MoSe');
         }
     })
 
     const get_age = birth => {
 
-        const present = 2019;
+        if(birth === null){
+            return '-';
+        }else{
+            const present = 2019;
         
-        let year = birth.split('-');
-        let year_birth = year[0];
-        let month_birth = year[1];
-        let today = new Date();
-        let month = String(today.getMonth() + 1).padStart(2, '0');
+            let year = birth.split('-');
+            let year_birth = year[0];
+            let month_birth = year[1];
+            let today = new Date();
+            let month = String(today.getMonth() + 1).padStart(2, '0');
 
-        if(month < month_birth){
-            return present - year_birth - 1;
+            if(month < month_birth){
+                return present - year_birth - 1;
+            }
+
+            return present - year_birth;
         }
-
-        return present - year_birth;
         
     }
 

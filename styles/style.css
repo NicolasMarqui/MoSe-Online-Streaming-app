@@ -28,6 +28,44 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
+body ::-webkit-input-placeholder, html ::-webkit-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #c4c4c4;
+  opacity: 1;
+  /* Firefox */
+}
+
+body :-ms-input-placeholder, html :-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #c4c4c4;
+  opacity: 1;
+  /* Firefox */
+}
+
+body ::-ms-input-placeholder, html ::-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #c4c4c4;
+  opacity: 1;
+  /* Firefox */
+}
+
+body ::placeholder, html ::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #c4c4c4;
+  opacity: 1;
+  /* Firefox */
+}
+
+body :-ms-input-placeholder, html :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #c4c4c4;
+}
+
+body ::-ms-input-placeholder, html ::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #c4c4c4;
+}
+
 .col-in-block {
   float: none;
   display: inline-block;
@@ -114,6 +152,11 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 .main-container .nav-bar .logo h1 {
   margin: 0;
   color: #fff;
+}
+
+.main-container .nav-bar .logo h1 a {
+  color: #fff;
+  text-decoration: none;
 }
 
 .main-container .nav-bar .menu ul {
@@ -809,4 +852,143 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 
 .main-container .images-person .row div img {
   display: inline-block;
+}
+
+.main-container .login-wrapper {
+  height: 100vh;
+  width: 100%;
+  background-image: url("https://image.tmdb.org/t/p/original//vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.main-container .login-wrapper .opa {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(51, 51, 51, 0.8);
+}
+
+.main-container .login-wrapper .login-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main-container .login-wrapper .login-middle form input {
+  display: block;
+  padding: 14px;
+  margin: 15px 0;
+  border: none;
+  outline: none;
+  background-color: #232323;
+  color: #fff;
+}
+
+.main-container .login-wrapper .login-middle form h2 {
+  color: #fff;
+  font-weight: 900;
+}
+
+.main-container .login-wrapper .login-middle form h2 span {
+  color: #db1d3f;
+}
+
+.main-container .login-wrapper .login-middle form a {
+  display: block;
+  text-align: center;
+  margin: 5px 0;
+  color: #fff;
+}
+
+.main-container .login-wrapper .login-middle form button {
+  width: 100%;
+  margin: 25px 0;
+  background-color: #db1d3f;
+  padding: 14px;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+}
+
+.main-container .login-wrapper .login-middle form button:hover {
+  background-color: #e64562;
+}
+
+.main-container .sign-up-wrapper {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.main-container .sign-up-wrapper .sign-wallpaper {
+  height: 100vh;
+  width: 100%;
+  background-image: url("https://coverfiles.alphacoders.com/960/96071.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.main-container .sign-up-wrapper .opa {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(51, 51, 51, 0.8);
+}
+
+.main-container .sign-up-wrapper .sign-form {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.main-container .sign-up-wrapper .sign-form form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main-container .sign-up-wrapper .sign-form form input {
+  display: block;
+  padding: 14px;
+  margin: 15px 0;
+  border: 2px solid #db1d3f;
+  outline: none;
+  background-color: #232323;
+  color: #fff;
+}
+
+.main-container .sign-up-wrapper .sign-form form button {
+  width: 100%;
+  margin: 25px 0;
+  background-color: #db1d3f;
+  padding: 14px;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  outline: none;
+}
+
+.main-container .sign-up-wrapper .sign-form form button:hover {
+  background-color: #e64562;
+}
+
+.main-container .sign-up-wrapper .sign-form form h2 {
+  color: #fff;
+  font-weight: 900;
+}
+
+.main-container .sign-up-wrapper .sign-form form p {
+  color: #fff;
+  font-weight: 400;
 }

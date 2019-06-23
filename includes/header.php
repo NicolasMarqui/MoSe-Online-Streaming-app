@@ -16,7 +16,7 @@
                 <div class="row fs-0">
                     <div class="col-xs-6 col-md-3 col-in-block">
                         <div class="logo">
-                            <h1>MoSe</h1>
+                            <h1><a href="index.php">MoSe</a></h1>
                         </div>
                     </div>
                     <div class="col-xs-6 col-md-9 col-in-block text-right hidden-xs hidden-sm">
