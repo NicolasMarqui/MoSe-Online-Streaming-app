@@ -15,7 +15,7 @@ $(document).ready(function(){
             return pair[1];
           }
         } 
-        alert('Query Variable ' + variable + ' not found');
+        console.log('Query Variable ' + variable + ' not found');
       }
 
     const getGenres = () =>{
@@ -171,10 +171,137 @@ $(document).ready(function(){
 
         })
     }
+    const tv_info = (id) => {
+        $.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`,function(data){
+
+            let parent = $('.movie-info');
+
+            $('.similar-movies').css('background-image', `url('${FULL_IMAGE_URL}${data.backdrop_path}')`);
+
+            let div = `
+                <div class="wrapper-info">
+                    <div class="banner-movie-img" style="background-image: url('${FULL_IMAGE_URL}${data.backdrop_path}')">
+                        <div class="banner-opacity"></div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-3">
+                                <div class="movie-info-info">
+                                    <img src="${IMG_URL}${data.poster_path}">
+                                    <a href="#">Watch</a>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-9">
+                                <div class="movie-information">
+                                    <h1>${data.original_name}</h1>
+                                    <div class="show-genres-span"> <ul id="genres-title"></ul> </div>
+                                    <p class="movie-overview">${data.overview}</p>
+                                    <div class="movie-misc">
+
+                                        <div class="row fs-0">
+                                            <div class="col-xs-12 col-md-6 col-in-block">
+                                                <p>Info</p>
+                                                <h2>${data.status === 'Ended' ? 'Ended' : 'Still playing'}</h2>
+                                                <h2 class="movie-vote">${data.vote_average}/<span>${data.vote_count}</span></h2>
+                                            </div>
+                                            <div class="col-xs-12 col-md-6 col-in-block">
+                                                <h2>Number of Seasons: <span>${data.number_of_seasons !== null ? data.number_of_seasons : '-'}</span></h2>
+                                                <h2>Number of episodes: <span>${data.number_of_episodes !== null ? data.number_of_episodes : '-'}</span></h2>
+                                            </div>
+                                        </div>
+
+                                        <div class="show-tv-seasons">
+                                            <ul class="nav nav-tabs" id="all_seasons">
+                                            </ul>
+                                            <div class="append-me">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+
+            parent.append(div);
+
+            data.seasons.forEach((season,i) => {
+                $('#all_seasons').append(`<li role="presentation" ><a href="#${season.id}">${season.name}</a> </li>`);
+
+                let div= `
+                    <div class="display_season_info" id="${season.id}">
+                        <div class="row fs-0">
+                            <div class="col-xs-12 col-md-3 col-in-block">
+                                <img src="${IMG_URL}${season.poster_path}">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-in-block v-top">
+                                <h2>${season.name}</h2>
+                                <p>${season.overview}</p>
+
+                                <h2>Total of episodes: ${season.episode_count}</h2>
+                            </div>
+                        </div>
+                    </div>
+                `
+
+                
+                // $(`#${season.id}`)
+                
+                $('.append-me').append(div);
+                
+                if(i === 1){
+                    $(`a[href^="#${season.id}"]`).addClass('active');
+                    $(`#${season.id}`).css('display', 'block');
+                }
+
+
+                $(`a[href^="#${season.id}"]`).on('click', function(e){
+                    $('.nav-tabs li a').removeClass('active');
+                    $(this).addClass('active');
+                    e.preventDefault();
+                    $('.display_season_info').hide();
+                    $(`#${season.id}`).css('display', 'block');
+
+                })
+
+                
+            })
+
+            data.videos.results.forEach(trailers => {
+                if(trailers.type === 'Trailer'){
+                    let trailer = `
+                        <div class="trailer-wrapper">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/${trailers.key}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div>
+                    `
+
+                    parent.append(trailer);
+                }
+            })
+
+
+            let genres_span = $('#genres-title');
+
+            data.genres.forEach(genre => {
+                let li = `<li><p>${genre.name}</p></li>`
+                genres_span.append(li);
+            })
+
+        })
+    }
 
     window.onload = function() {
         if (window.location.href.indexOf('info.php') > -1) {
-          movie_info(getQueryVariable('id'));
+
+            if(getQueryVariable('type') === 'movie' || getQueryVariable('type') === 'Movie'){
+                movie_info(getQueryVariable('id'));
+            }else{
+                tv_info(getQueryVariable('id'));
+            }
+
           get_similar_movie(getQueryVariable('id'))
         }else if(window.location.href.indexOf('search.php') > -1){
             display_search_query(getQueryVariable('query'))
@@ -227,6 +354,7 @@ $(document).ready(function(){
 
         let results = $('.show-query-results');
         let parent = $('#display_search');
+        let div;
         
         $.get(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`, (data) => {
             console.log(data)
@@ -237,21 +365,54 @@ $(document).ready(function(){
                 results.append(`<h2><span>${data.total_results}</span> results found for <span>'${query}'<span></h2>`);
 
                 data.results.forEach(search => {
-
-                    let div = `
-                        <div class="search-results">
-                            <div class="col-xs-12 col-md-3 col-in-block">
-                                <img src="${IMG_URL}${search.poster_path}">
-                            </div>
-                            <div class="col-xs-12 col-md-9 col-in-block v-top">
-                                <h2>${search.media_type === 'tv' ? search.original_name : search.title}</h2>
-                                <p>${search.overview}</p>
-                                <a href="#">Watch</a>
-                                <a href="info.php?id=${search.id}">Info</a>
-                            </div>
-                        </div>
-                        
-                    `
+                    switch(search.media_type){
+                        case 'tv':
+                                div = `
+                                <div class="search-results">
+                                    <div class="col-xs-12 col-md-3 col-in-block">
+                                        <img src="${IMG_URL}${search.poster_path}">
+                                    </div>
+                                    <div class="col-xs-12 col-md-9 col-in-block v-top">
+                                        <h2>${search.original_name}</h2>
+                                        <p>${search.overview}</p>
+                                        <a href="#">Watch</a>
+                                        <a href="info.php?id=${search.id}&type=${search.media_type}">Info</a>
+                                    </div>
+                                </div>
+                                
+                            `
+                        break;
+                        case 'movie':
+                                div = `
+                                <div class="search-results">
+                                    <div class="col-xs-12 col-md-3 col-in-block">
+                                        <img src="${IMG_URL}${search.poster_path}">
+                                    </div>
+                                    <div class="col-xs-12 col-md-9 col-in-block v-top">
+                                        <h2>${search.title}</h2>
+                                        <p>${search.overview}</p>
+                                        <a href="#">Watch</a>
+                                        <a href="info.php?id=${search.id}&type=${search.media_type}">Info</a>
+                                    </div>
+                                </div>
+                                
+                            `
+                        break;
+                        case 'person':
+                                div = `
+                                <div class="search-results">
+                                    <div class="col-xs-12 col-md-3 col-in-block">
+                                        <img src="${IMG_URL}${search.profile_path}">
+                                    </div>
+                                    <div class="col-xs-12 col-md-9 col-in-block v-top">
+                                        <h2>${search.name}</h2>
+                                        <a href="info.php?id=${search.id}&type=${search.media_type}">Info</a>
+                                    </div>
+                                </div>
+                                
+                            `
+                        break;
+                    }
 
                     parent.append(div);
 

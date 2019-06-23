@@ -79,6 +79,14 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
   padding-left: 0;
 }
 
+.p-r-0 {
+  padding-right: 0;
+}
+
+.p-0 {
+  padding: 0;
+}
+
 .m-w {
   max-width: 100%;
 }
@@ -335,7 +343,7 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 }
 
 .main-container .movie-info .wrapper-info .movie-information p.movie-overview {
-  color: #fff;
+  color: #c4c4c4;
   line-height: 34px;
   text-align: justify;
 }
@@ -346,8 +354,22 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
   color: #fff;
 }
 
+.main-container .movie-info .wrapper-info .movie-information .movie-misc h2 {
+  font-size: 15px;
+}
+
+.main-container .movie-info .wrapper-info .movie-information .movie-misc h2 span {
+  color: #db1d3f;
+}
+
 .main-container .movie-info .wrapper-info .movie-information .movie-misc .movie-vote span {
   font-size: 10px;
+}
+
+@media (max-width: 992px) {
+  .main-container .movie-info .wrapper-info .movie-information .movie-misc {
+    text-align: center;
+  }
 }
 
 .main-container .movie-info .trailer-wrapper {
@@ -531,9 +553,10 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 }
 
 .main-container .search-wrapper .search-results {
-  border: 2px solid red;
   margin: 15px 0;
   padding: 25px 0;
+  -webkit-box-shadow: 1px 21px 41px 8px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 21px 41px 8px rgba(0, 0, 0, 0.75);
 }
 
 .main-container .search-wrapper .search-results h2 {
@@ -543,7 +566,7 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
 .main-container .search-wrapper .search-results p {
   font-size: 14px;
   line-height: 28px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.4);
   font-weight: 400;
 }
 
@@ -581,4 +604,205 @@ body ::-webkit-scrollbar-thumb, html ::-webkit-scrollbar-thumb {
   color: #fff;
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
+}
+
+.main-container .search-again {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main-container .search-again h3 {
+  font-size: 44px;
+  color: #db1d3f;
+  text-align: center;
+}
+
+.main-container .search-again input {
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  background-color: #232323;
+  width: 100%;
+  color: #fff;
+}
+
+.main-container .search-again button {
+  padding: 10px;
+  background-color: #db1d3f;
+  color: #fff;
+  border: none;
+  margin: 15px 0;
+  outline: none;
+  width: 100%;
+  border-radius: 25px;
+}
+
+.main-container .search-again button:hover {
+  background-color: #e64562;
+}
+
+.main-container .not-query {
+  width: 100%;
+  padding: 50px 0;
+}
+
+.main-container .not-query h1 {
+  text-align: center;
+  color: #fff;
+  padding: 0 0 20px;
+}
+
+.main-container .not-query ul {
+  width: 25%;
+  margin: 0 auto;
+  text-align: center;
+  list-style: none;
+}
+
+.main-container .not-query ul li {
+  padding: 8px;
+}
+
+.main-container .not-query ul li a {
+  display: block;
+  background-color: #db1d3f;
+  padding: 14px;
+  color: #fff;
+}
+
+.main-container .not-query .search-example img {
+  height: 400px;
+  width: 400px;
+}
+
+.main-container .not-query .bottom-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #db1d3f;
+  text-align: center;
+  color: #fff;
+  padding: 14px;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.main-container .not-query .bottom-info a {
+  color: #fff;
+  display: block;
+}
+
+.main-container .not-query .bottom-info p {
+  display: none;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: left;
+}
+
+.main-container .not-query .bottom-info:hover {
+  top: 0;
+  background-color: rgba(219, 29, 63, 0.6);
+}
+
+.main-container .not-query .bottom-info:hover p {
+  display: block;
+}
+
+.main-container .not-query .bottom-info:hover a {
+  position: absolute;
+  background-color: #fff;
+  padding: 14px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: black;
+}
+
+.main-container .not-query .actors {
+  background-image: url("https://ovicio.com.br/wp-content/uploads/2019/05/20190518-johnwick-anatomy-videosixteenbyninejumbo1600-v2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 500px;
+}
+
+.main-container .not-query .movies-sear {
+  background-image: url("https://pbs.twimg.com/media/D51Xw9OW0AEv-_D.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 500px;
+}
+
+.main-container .not-query .tv-sear {
+  background-image: url("https://i2.wp.com/www.showmetech.com.br/wp-content/uploads//2019/05/13771.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 500px;
+}
+
+.main-container .footer {
+  padding: 25px 0;
+  background-color: #3d3d3d;
+  font-size: 14px;
+}
+
+.main-container .append-me div.display_season_info {
+  display: none;
+  padding: 25px 0;
+}
+
+.main-container .append-me div.display_season_info p {
+  font-size: 14px;
+  line-height: 24px;
+  color: #c4c4c4;
+  text-align: justify;
+}
+
+@media (max-width: 992px) {
+  .main-container .append-me div.display_season_info {
+    text-align: center;
+  }
+}
+
+.main-container .show-tv-seasons {
+  margin-top: 25px;
+}
+
+.main-container .nav-tabs {
+  background-color: #1d1e32;
+}
+
+.main-container .nav-tabs a {
+  color: #fff;
+}
+
+.main-container .nav-tabs a:hover {
+  background-color: #db1d3f;
+  border: none;
+}
+
+.main-container .nav-tabs a.active {
+  background-color: #db1d3f;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .main-container .nav-tabs li {
+    width: 100%;
+  }
 }
