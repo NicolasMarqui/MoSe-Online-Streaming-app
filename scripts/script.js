@@ -16,7 +16,33 @@ $(document).ready(function(){
           }
         } 
         console.log('Query Variable ' + variable + ' not found');
+        return false
       }
+
+      const search_by_genres = (genre_id) => {
+        $.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre_id}`, function(data){
+
+            let parent = $('#display-movies');
+
+            $.map(data.results, function(filmes, i){
+                console.log(filmes)
+                let div = `
+                    <div class="col-xs-12 col-sm-6 col-lg-3 col-in-block filmes">
+                        <h2>${filmes.title}</h2>
+                        <img src="${IMG_URL}${filmes.poster_path}">
+                        <div class="btn-down">
+                            <a href="#">Watch</a>
+                            <a href="info.php?id=${filmes.id}&type=movie">Details</a>
+                        </div>
+                    </div>
+                `
+
+                parent.append(div);
+                
+                
+            })
+        });
+    }
 
     const getGenres = () =>{
         $.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`, (data) => {
@@ -32,6 +58,10 @@ $(document).ready(function(){
                     li.appendChild(a);
 
                     parent.append(li);
+
+                    $(li).on('click', function(){
+                        location.replace(`index.php?genre=${genre.id}`)
+                    })
                 });
                 
                 
@@ -43,28 +73,36 @@ $(document).ready(function(){
 
     const getPopularMovies = () => {
 
-        $.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`, function(data){
-
-            let parent = $('#display-movies');
-
-            $.map(data.results, function(filmes, i){
-                let div = `
-                    <div class="col-xs-12 col-sm-6 col-lg-3 col-in-block filmes">
-                        <h2>${filmes.title}</h2>
-                        <img src="${IMG_URL}${filmes.poster_path}">
-                        <div class="btn-down">
-                            <a href="info.php?id=${filmes.id}&type=movie">Details</a>
-                            <a href="#">Watch</a>
-                        </div>
-                    </div>
-                `
-
-                parent.append(div);
-                
-                
-            })
-
-        })
+        if (window.location.href.indexOf('index.php') > -1) {
+            console.log(getQueryVariable('genre'))
+            if(getQueryVariable('genre') !== false){
+                search_by_genres(getQueryVariable('genre'));
+            }else{
+                $.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`, function(data){
+        
+                    let parent = $('#display-movies');
+        
+                    $.map(data.results, function(filmes, i){
+                        let div = `
+                            <div class="col-xs-12 col-sm-6 col-lg-3 col-in-block filmes">
+                                <h2>${filmes.title}</h2>
+                                <img src="${IMG_URL}${filmes.poster_path}">
+                                <div class="btn-down">
+                                    <a href="#">Watch</a>
+                                    <a href="info.php?id=${filmes.id}&type=movie">Details</a>
+                                </div>
+                            </div>
+                        `
+        
+                        parent.append(div);
+                        
+                        
+                    })
+        
+                })
+            }
+        }
+        
     }
 
     getPopularMovies();
@@ -130,11 +168,11 @@ $(document).ready(function(){
                                     <div class="show-genres-span"> <ul id="genres-title"></ul> </div>
                                     <p class="movie-overview">${data.overview}</p>
                                     <div class="movie-misc">
-                                        <p>Info</p>
-                                        <h2>${data.status === 'Released' ? 'Released' : 'Not released'}</h2>
+                                        <p class="movie-misc-title">Info</p>
+                                        <h2>Status: ${data.status === 'Released' ? 'Released' : 'Not released'}</h2>
                                         <h2 class="movie-teste"></span></h2>
                                         <h2 class="movie-vote">${data.vote_average}/<span>${data.vote_count}</span></h2>
-                                        <h2 class="movie-runtime">${runtime_to_hours(data.runtime)}</h2>
+                                        <h2 class="movie-runtime">Runtime: ${runtime_to_hours(data.runtime)}</h2>
                                     </div>
                                 </div>
                             </div>

@@ -86,7 +86,7 @@ body ::-ms-input-placeholder, html ::-ms-input-placeholder {
 
 .filmes .btn-down a {
   font-size: 14px;
-  padding: 14px 14px;
+  padding: 10px 18px;
   margin: 0 15px;
   text-decoration: none;
   border-radius: 15px;
@@ -95,8 +95,8 @@ body ::-ms-input-placeholder, html ::-ms-input-placeholder {
   display: inline-block;
 }
 
-.filmes .btn-down a:first-child {
-  background-color: #1d1e32;
+.filmes .btn-down a:last-child {
+  background-color: #0576DC;
 }
 
 .filmes h2 {
@@ -385,6 +385,15 @@ body ::-ms-input-placeholder, html ::-ms-input-placeholder {
   cursor: pointer;
 }
 
+@media (max-width: 992px) {
+  .main-container .movie-info .wrapper-info .movie-information h1 {
+    text-align: center;
+  }
+  .main-container .movie-info .wrapper-info .movie-information .show-genres-span {
+    text-align: center;
+  }
+}
+
 .main-container .movie-info .wrapper-info .movie-information p.movie-overview {
   color: #c4c4c4;
   line-height: 34px;
@@ -403,6 +412,50 @@ body ::-ms-input-placeholder, html ::-ms-input-placeholder {
 
 .main-container .movie-info .wrapper-info .movie-information .movie-misc h2 span {
   color: #db1d3f;
+}
+
+.main-container .movie-info .wrapper-info .movie-information .movie-misc .movie-misc-title {
+  text-align: center;
+  font-size: 30px;
+  position: relative;
+}
+
+.main-container .movie-info .wrapper-info .movie-information .movie-misc .movie-misc-title::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 4px;
+  background-color: #db1d3f;
+  margin: 0 5px;
+  right: 55%;
+}
+
+.main-container .movie-info .wrapper-info .movie-information .movie-misc .movie-misc-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 4px;
+  background-color: #db1d3f;
+  margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+  .main-container .movie-info .wrapper-info .movie-information .movie-misc .movie-misc-title::after {
+    width: 30%;
+  }
+  .main-container .movie-info .wrapper-info .movie-information .movie-misc .movie-misc-title::before {
+    width: 30%;
+    right: 56%;
+  }
+}
+
+@media (max-width: 450px) {
+  .main-container .movie-info .wrapper-info .movie-information .movie-misc .movie-misc-title::before {
+    width: 30%;
+    right: 59%;
+  }
 }
 
 .main-container .movie-info .wrapper-info .movie-information .movie-misc .movie-vote span {

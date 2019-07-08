@@ -43,7 +43,7 @@
                     <div class="col-xs-12 col-md-4">
                         <div class="search-example actors">
                             <div class="bottom-info">
-                                <a href="search.php?query=keanu">Actors</a>
+                                <a href="search.php?query=keanu reeves ">Actors</a>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sequi repellat vero commodi laborum ratione voluptatum esse eum nisi sit.</p>
                             </div>
                         </div>
